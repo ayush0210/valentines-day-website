@@ -46,10 +46,12 @@ function checkProximity(mouseX, mouseY) {
         Math.pow(mouseY - btnCenterY, 2)
     );
 
-    // If mouse is within 100px of the button, move it
-    const threshold = 100;
+    // If mouse is on the button or within 150px, move it
+    const threshold = 150;
+    const isOnButton = mouseX >= rect.left && mouseX <= rect.right &&
+                       mouseY >= rect.top && mouseY <= rect.bottom;
 
-    if (distance < threshold) {
+    if (distance < threshold || isOnButton) {
         moveNoButton();
         // Make Yes button bigger when No button runs away
         yesBtn.style.transform = 'scale(1.1)';
@@ -140,12 +142,16 @@ document.head.appendChild(style);
 
 // Initialize No button position
 window.addEventListener('load', () => {
-    // Set initial position for No button
+    // Set initial position for No button on the right
     const container = document.querySelector('.buttons-container');
-    const containerWidth = container.offsetWidth;
+    const containerRect = container.getBoundingClientRect();
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
 
-    noBtn.style.position = 'absolute';
-    noBtn.style.left = (containerWidth - 150) + 'px'; // Position to the right
-    noBtn.style.top = '50%';
-    noBtn.style.transform = 'translateY(-50%)';
+    // Position on the right side
+    const initialX = containerRect.width - btnWidth - 20;
+    const initialY = (containerRect.height - btnHeight) / 2;
+
+    noBtn.style.left = initialX + 'px';
+    noBtn.style.top = initialY + 'px';
 });

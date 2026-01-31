@@ -97,16 +97,17 @@ body {
 
 .buttons-container {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    gap: 40px;
+    justify-content: space-between;
     align-items: center;
     margin-top: 40px;
     position: relative;
     min-height: 120px;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 20px;
 }
 
 .yes-btn {
@@ -122,6 +123,7 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
     z-index: 2;
+    position: relative;
 }
 
 .yes-btn:hover {
@@ -143,12 +145,9 @@ body {
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: left 0.3s ease, top 0.3s ease;
     position: absolute;
     z-index: 3;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .no-btn:hover {
