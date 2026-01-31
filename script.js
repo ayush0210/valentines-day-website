@@ -16,9 +16,10 @@ function getRandomPosition() {
     const btnWidth = noBtn.offsetWidth;
     const btnHeight = noBtn.offsetHeight;
 
-    // Calculate available space (keeping button within container)
-    const maxX = containerRect.width - btnWidth;
-    const maxY = containerRect.height - btnHeight;
+    // Calculate available space (keeping button within container with padding)
+    const padding = 10;
+    const maxX = Math.max(containerRect.width - btnWidth - padding, 0);
+    const maxY = Math.max(containerRect.height - btnHeight - padding, 0);
 
     // Generate random position
     const randomX = Math.random() * maxX;
@@ -69,6 +70,13 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // Handle touch events for mobile
+document.addEventListener('touchmove', (e) => {
+    if (questionPage.classList.contains('active') && e.touches.length > 0) {
+        const touch = e.touches[0];
+        checkProximity(touch.clientX, touch.clientY);
+    }
+});
+
 noBtn.addEventListener('touchstart', (e) => {
     e.preventDefault();
     moveNoButton();
