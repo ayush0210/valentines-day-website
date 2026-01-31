@@ -103,6 +103,10 @@ body {
     margin-top: 40px;
     position: relative;
     min-height: 120px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .yes-btn {
@@ -141,7 +145,10 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     position: absolute;
-    z-index: 1;
+    z-index: 3;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .no-btn:hover {

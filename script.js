@@ -141,8 +141,11 @@ document.head.appendChild(style);
 // Initialize No button position
 window.addEventListener('load', () => {
     // Set initial position for No button
+    const container = document.querySelector('.buttons-container');
+    const containerWidth = container.offsetWidth;
+
     noBtn.style.position = 'absolute';
-    noBtn.style.right = '50px';
+    noBtn.style.left = (containerWidth - 150) + 'px'; // Position to the right
     noBtn.style.top = '50%';
     noBtn.style.transform = 'translateY(-50%)';
 });
