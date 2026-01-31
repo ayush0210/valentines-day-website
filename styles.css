@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.page {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.page.active {
+    display: flex;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    color: #ff6b9d;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.question {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.gif-container {
+    margin: 30px 0;
+}
+
+.cute-gif, .celebration-gif {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.buttons-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    position: relative;
+    min-height: 120px;
+}
+
+.yes-btn {
+    font-family: 'Poppins', sans-serif;
+    padding: 25px 60px;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+    z-index: 2;
+}
+
+.yes-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+}
+
+.yes-btn:active {
+    transform: scale(1.05);
+}
+
+.no-btn {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    background: #e0e0e0;
+    color: #666;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: absolute;
+    z-index: 1;
+}
+
+.no-btn:hover {
+    background: #d0d0d0;
+}
+
+/* Success Page Styles */
+.success-container {
+    animation: scaleIn 0.8s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.celebration-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ffd700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: rainbow 3s ease infinite;
+}
+
+@keyframes rainbow {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(30deg);
+    }
+}
+
+.success-message {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.love-text {
+    font-size: 1.3rem;
+    color: #555;
+    margin-top: 30px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Floating Hearts Background */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 107, 157, 0.6);
+    transform: rotate(45deg);
+    animation: float 15s infinite;
+    opacity: 0;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 107, 157, 0.6);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -20px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -20px;
+}
+
+.heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
+.heart:nth-child(2) {
+    left: 25%;
+    animation-delay: 2s;
+    animation-duration: 14s;
+}
+
+.heart:nth-child(3) {
+    left: 40%;
+    animation-delay: 4s;
+    animation-duration: 16s;
+}
+
+.heart:nth-child(4) {
+    left: 60%;
+    animation-delay: 1s;
+    animation-duration: 13s;
+}
+
+.heart:nth-child(5) {
+    left: 75%;
+    animation-delay: 3s;
+    animation-duration: 15s;
+}
+
+.heart:nth-child(6) {
+    left: 90%;
+    animation-delay: 5s;
+    animation-duration: 11s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(45deg) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) rotate(45deg) scale(1);
+        opacity: 0;
+    }
+}
+
+.celebration .heart {
+    animation-duration: 8s;
+}
+
+.celebration .heart:nth-child(7),
+.celebration .heart:nth-child(8) {
+    left: 50%;
+    animation-delay: 0.5s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .question {
+        font-size: 1.5rem;
+    }
+
+    .yes-btn {
+        padding: 20px 40px;
+        font-size: 1.5rem;
+    }
+
+    .no-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .celebration-title {
+        font-size: 3.5rem;
+    }
+
+    .success-message {
+        font-size: 1.8rem;
+    }
+
+    .cute-gif, .celebration-gif {
+        width: 200px;
+        height: 200px;
+    }
+}
